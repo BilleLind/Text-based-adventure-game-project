@@ -60,7 +60,7 @@ public class Main {
                     else if (enemyHealth < 1) {
                         numberDefeted++;
                     }
-
+                                        //TODO make sure to not let health potion go beyond health (class wise)
                 }else if (input.equals("2")) {
                     if (numHealthPotions > 0) {
                         health += healthPotionHealAmount;
