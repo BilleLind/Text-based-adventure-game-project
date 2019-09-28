@@ -27,6 +27,7 @@ while (exit) {
         System.out.println(health);}
     else if (stamina==5) {
         health+10;
+        //TODO health+10=int maxHealth
         System.out.println(health);}
     else if (stamina==6) {
         health+20;
