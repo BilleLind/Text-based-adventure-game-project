@@ -14,7 +14,7 @@ String [] Class ={ "Warrior", "Rogue", "Wizard",  "Hunter", "Classless"};
 
 boolean exit = true;
 MENU:
-while (exit) {
+while (exit) {a
     System.out.println("#########################");
     System.out.println("Welcome to my first game!");
     System.out.println("#########################");
