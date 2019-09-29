@@ -3,7 +3,7 @@ package TutorialForGame;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Main {
+public class Main extends InstanceVariables {
     public static void main(String[] args) {
         //System objects
         Scanner in = new Scanner(System.in);
@@ -13,7 +13,9 @@ public class Main {
 
         // Game variables
         String[] enemies = {"Skeleton", "Zombie", "Berserker", "Assassin"};
-        int maxEnemyHealth = 45;
+        String[] classes = {"Warrior", "Rogue", "Wizard", "Hunter", "Classless"};
+
+        int maxEnemyHealth = 60;
         int enemyAttackDamage = 25;
 
         //player variables
@@ -24,11 +26,10 @@ public class Main {
         int healthPotionDropChance = 35; //percentage for drop, after killing monster
         int numberDefeated = 0;
 
-        String[] Class = {"Warrior", "Rogue", "Wizard", "Hunter", "Classless"};
 
         boolean notWounded = true;
         int woundedChance = 5; // percentage for getting wounded after attacked
-        int stamina = 0; // 4=60, 5 =70, 6=80, 7=90, 8=100, 9=110, 10=120 HP
+        int stamina = 4; // 4=60, 5 =70, 6=80, 7=90, 8=100, 9=110, 10=120 HP
         int attackmodifier = 0; // 4=+20 (wizard), 3=+15 (hunter/rogue first strike), 2=+10(warrior), 1=-10 (wounded?)
         int dodge = 0; //rogue 3=20 %, warrior 2=12%, wizard 1=-10 %. base 0=6% avoiding % damage
         int playerHealth = 0;
@@ -50,60 +51,68 @@ public class Main {
         double oneTenth = 0.9;
         double hundredMinusSix = 0.94;
         double oneOneZero = 1.1;
+        int one = 1;
+        int two = 2;
+        int three = 3;
+        int four = 4;
+        int six = 6;
+        int seven = 7;
+        int eight = 8;
+        int nine = 9;
         boolean exit = true;
+
+        System.out.println("#########################");
+        System.out.println("Welcome to my first game!");
+        System.out.println("#########################");
 
         MENU:
         while (exit) {
-            System.out.println("#########################");
-            System.out.println("Welcome to my first game!");
-            System.out.println("#########################");
-
             System.out.println("Would you like to choose character(1) or would you like to exit(2)?");
 
             //creating the health difference, so that i can be changes after selection of class and through level up (if created)
             if (stamina == 4) {
-                health = playerHealth;
-                playerHealth = health + zero;
+
+                playerHealth += health + zero;
                 System.out.println(playerHealth);
             } else if (stamina == 5) {
-                health = playerHealth;
-                playerHealth = health + ten;
+
+                playerHealth += health + ten;
                 System.out.println(playerHealth);
             } else if (stamina == 6) {
-                health = playerHealth;
-                playerHealth = health + twenty;
+
+                playerHealth += health + twenty;
                 System.out.println(playerHealth);
             } else if (stamina == 7) {
-                health = playerHealth;
-                playerHealth = health + thirty;
+
+                playerHealth += health + thirty;
                 System.out.println(playerHealth);
             } else if (stamina == 8) {
-                health = playerHealth;
-                playerHealth = health + forty;
+
+                playerHealth += health + forty;
                 System.out.println(playerHealth);
             } else if (stamina == 9) {
-                health = playerHealth;
-                playerHealth = health + fifty;
+
+                playerHealth += health + fifty;
                 System.out.println(playerHealth);
             } else if (stamina == 10) {
-                health = playerHealth;
-                playerHealth = health + sixty;
+
+                playerHealth += health + sixty;
                 System.out.println(playerHealth);
             } else if (stamina == 11) {
-                health = playerHealth;
-                playerHealth = health + seventy;
+
+                playerHealth += health + seventy;
                 System.out.println(playerHealth);
             } else if (stamina == 12) {
-                health = playerHealth;
-                playerHealth = health + eighty;
+
+                playerHealth += health + eighty;
                 System.out.println(playerHealth);
             } else if (stamina == 13) {
-                health = playerHealth;
-                playerHealth = health + ninety;
+
+                playerHealth += health + ninety;
                 System.out.println(playerHealth);
             } else if (stamina == 14) {
-                health = playerHealth;
-                playerHealth = health + hundred;
+
+                playerHealth += health + hundred;
                 System.out.println(playerHealth);
             } else {
                 System.out.println("you have reached maxium health!");
@@ -111,73 +120,66 @@ public class Main {
 
             //creating the values for the different attackmodifiers
             if (attackmodifier == 1) {
-                five += attackDamage;
+                   attackDamage +=five;
             } else if (attackmodifier == 2) {
-                ten += attackDamage;
+                 attackDamage += ten;
             } else if (attackmodifier == 3) {
-                fiften += attackDamage;
+                 attackDamage +=fiften;
             } else if (attackmodifier == 4) {
-                twenty += attackDamage;
+                 attackDamage += twenty;
             } else {
-                ten -= attackDamage;
+                  attackDamage -= ten;
             }
 
 
-            String input = in.nextLine();
-
-            while (!input.equals("1") && !input.equals("2")) {
-                System.out.println("Invalid command!");
-                input = in.nextLine();
+                String input = in.nextLine();
                 if (input.equals("1")) {
                     System.out.println("Please Choose between: Warrior(0), Rogue(1), Wizard(2), Hunter(3), Classless(4)");
-
                 } else if (input.equals("2")) {
                     System.out.println("Thanks for playing!");
                     break MENU;
-                } else {
-                    System.out.println("Invalid command");
-                }
-            }
+                } else {  System.out.println("Invalid command"); }
 
-                String entered = in.nextLine();
-                while (!entered.equals("2") && !entered.equals("3") && !entered.equals("4") && !entered.equals("0") && !entered.equals("1")) {
+
+                     input = in.nextLine();
+                while (!input.equals("2") && !input.equals("3") && !input.equals("4") && !input.equals("0") && !input.equals("1")) {
                     System.out.println("Invalid command!");
+
                     input = in.nextLine();
-                }
                 //TODO switch instead? or will it work :/
                 // attackDamage + attackmodifier changed to something else considering other varibles input elsewhere
-                if (entered.equals("0")) {
-                    stamina = 8;
-                    attackmodifier = 2;
-                    dodge = 2;
+                if (input.equals("0")) {
+                    stamina += eight;
+                    attackmodifier +=two;
+                    dodge += two;
                     System.out.println("You have selected a Warrior!");
                     System.out.println("You have " + (playerHealth) + " HP " + (attackDamage + attackmodifier) + " Attack Damage");
-                } else if (entered.equals("1")) {
-                    stamina = 6;
-                    attackmodifier = 3;
-                    dodge = 3;
+                } else if (input.equals("1")) {
+                    stamina += six;
+                    attackmodifier += three;
+                    dodge += three;
                     System.out.println("You have selected a Rogue!");
                     System.out.println("You have " + (playerHealth) + " HP " + (attackDamage + attackmodifier) + " Attack Damage");
-                } else if (entered.equals("2")) {
-                    stamina = 7;
-                    attackmodifier = 4;
-                    dodge = 1;
+                } else if (input.equals("2")) {
+                    stamina += seven;
+                    attackmodifier += four;
+                    dodge += one;
                     System.out.println("You have selected a Wizard!");
                     System.out.println("You have " + (playerHealth) + " HP " + (attackDamage + attackmodifier) + " Attack Damage");
-                } else if (entered.equals("3")) {
-                    stamina = 7;
-                    attackmodifier = 3;
-                    dodge = 2;
+                } else if (input.equals("3")) {
+                    stamina += seven;
+                    attackmodifier += three;
+                    dodge += two;
                     System.out.println("You have selected a Hunter!");
                     System.out.println("You have " + (playerHealth) + " HP " + (attackDamage + attackmodifier) + " Attack Damage");
-                } else if (entered.equals("4")) {
-                    stamina = 8;
-                    attackmodifier = 1;
+                } else if (input.equals("4")) {
+                    stamina += eight;
+                    attackmodifier += one;
                     System.out.println("You have selected the Classless adventure!");
                     System.out.println("You have " + (playerHealth) + " HP " + (attackDamage + attackmodifier) + " Attack Damage");
                 } else {
                     System.out.println("invalid command!");
-                }
+                } }
 
 
                 boolean running = true;
@@ -205,12 +207,12 @@ public class Main {
                             int damageDealt = rand.nextInt(attackDamage);
                             int damageTaken = rand2.nextInt(enemyAttackDamage);
                             if (dodge == 1) {
-                                oneOneZero *= damageTaken;
+                                damageTaken *=oneOneZero;
                             } else if (dodge == 2) {
-                                ten *= damageTaken;
+                                damageTaken *= ten;
                             } else if (dodge == 3) {
-                                twenty *= damageTaken;
-                            } else { hundredMinusSix *= damageTaken;}
+                              damageTaken *= twenty;
+                            } else { damageTaken *=hundredMinusSix;}
 
                             enemyHealth -= damageDealt;
                             playerHealth -= damageTaken;
